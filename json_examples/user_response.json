@@ -1,0 +1,9 @@
+{
+  "userSentiments": [
+    { "user": "410409666", "value": { "emotion": 4, "sentiment": 4 } },
+    { "user": "27260086", "value": { "emotion": 4, "sentiment": 4 } },
+    { "user": "101431978", "value": { "emotion": 4, "sentiment": 4 } },
+    { "user": "317170443", "value": { "emotion": 4, "sentiment": 4 } }
+  ],
+  "errorSentiments": ["25073877", "79293791", "813286"]
+}
