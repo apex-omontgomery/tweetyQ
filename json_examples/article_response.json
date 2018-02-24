@@ -4,5 +4,5 @@
   "text":
     "A Florida Republican congressman calls for a ban on assault weapon sales {{url}}",
   "url": "https://t.co/DcwXt9vym6",
-  "sentimentValue": { "emotion": 4, "sentiment": 4 }
+  "sentimentValue": { "clickbait": 0.2, "emotional": 0.4, "factual": 0.7}
 }
