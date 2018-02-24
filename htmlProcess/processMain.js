@@ -9,17 +9,24 @@ const getAllTweetDoms = () => {
 
 // get url, get text, get tweet id, get user id
 const tweetObjectBuilder = singleTweet => {
-  const tweetInnerText = singleTweet.innerText;
-  const tweetId = singleTweet.getAttribute('data-item-id');
-  const userId = singleTweet.getAttribute('data-user-id');
-
-  // tweet container- assume one
-
-  // use data attribute for tweet id
-
-  let tweetObject = singleTweet.getElementsByClassName(
+  const tweetObject = singleTweet.getElementsByClassName(
     'js-tweet-text-container'
   );
+
+  return {
+    userId: singleTweet.getAttribute('data-user-id'),
+    tweetId: singleTweet.getAttribute('data-item-id'),
+    text: singleLevelText(tweetObject),
+    url: getSingleUrl(tweetObject)
+  };
+};
+
+const getSingleUrl = jsTweetContainer => {
+  let returnUrl = '';
+  const url = jsTweetContainer.getElementsByClassName('twitter-timeline-link');
+  if (url.length > 0) {
+    returnUrl = url[0].href;
+  }
 };
 
 const singleLevelTweetText = jsTweetContainer => {
