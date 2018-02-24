@@ -12,7 +12,7 @@ var natural_language_understanding = new NaturalLanguageUnderstandingV1({
 
 
 var parameters = {
-  'text': 'Dont kill all Asians',
+  'text': '74 degrees here in New York today, in the middle of February. Im loving this global warming, temporarily of course, until it turns back into global cooling next week',
   'features': {
     'entities': {
       'emotion': true,
@@ -23,6 +23,9 @@ var parameters = {
       'emotion': true,
       'sentiment': true,
       'limit': 2
+    },
+    'concepts':{
+      'limit': 3
     }
   }
 }
