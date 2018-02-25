@@ -1,3 +1,6 @@
+#This file takes a number of tweets from a single user, makes them into a single string variable and then uses WATSON AI
+#to analyze the language and determine what a user talks about the most
+
 import json
 import tweepy
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
@@ -17,6 +20,7 @@ natural_language_understanding = NaturalLanguageUnderstandingV1(
   password= "tLrq6dXUA1D5",
   version='2017-02-27')
 
+#Find tweets from your intended user and put them in a string 'n'
 def getInfo(user_id):
     tweets = []
     tweets = api.user_timeline(user_id=user_id, count =150)
@@ -26,6 +30,7 @@ def getInfo(user_id):
         n += tweet.text + ' '
     nluRun(n)
 
+#Run the NLU once it has been called from the getInfo function
 def nluRun(txt):
     response = natural_language_understanding.analyze(
       text= txt,
@@ -42,12 +47,15 @@ def nluRun(txt):
           limit=3))
     )
 
+#Prints the relevant texts and scores, len() is used because earlier it looped each tweet individually then we
+#compressed them all to one string
     for x in range(0,len(response["concepts"])):
         print(x)
         print(response["concepts"][x]["text"])
         print(response["concepts"][x]["relevance"])
 
-getInfo('25073877')
+#Call function with user id
+getInfo(user_id)
 
 
 # tweet = 'IBM is an American multinational technology company headquartered in Armonk, New York, United States, with operations in over 170 countries.'
