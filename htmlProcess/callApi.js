@@ -1,28 +1,33 @@
-urlMain = 'https://127.0.0.1:5000';
+urlMain = 'https://6506028f.ngrok.io';
 
-const callApiBase = (route, json) => {
-  fetch(`{urlMain}/{route}`, {
-    method: 'post',
+const getUser = user_id => {
+  return fetch(`${urlMain}/user/${user_id}`, {
+    method: 'GET',
+    mode: 'cors',
     headers: {
-      Accept: 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(json)
+      'Access-Control-Allow-Origin': '*'
+    }
   })
     .then(res => res.json())
-    .then(res => console.log(res));
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
 };
 
-const callUser = json => {
-  return callApiBase('user', json);
+const getTweet = tweet => {
+  return fetch(`${urlMain}/tweet/${encodeURIComponent(tweet)}`, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
 };
 
-const callTweet = json => {
-  return callApiBase('tweet', json);
-};
+user = '123452334';
+tweet = 'hi there friend how are you?';
 
-userJson = { user_id: '123452334' };
-tweetJson = { tweet: 'hi there friend' };
-
-callUser(userJson);
-callTweet(tweetJson);
+getTweet(tweet);
+getUser(user);
