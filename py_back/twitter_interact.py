@@ -14,7 +14,7 @@ def get_tweets(user_id: str)-> str:
     all_tweets = []
 
     for tweet in api.user_timeline(user_id=user_id, count=150):
-        if not tweet.retweeted:
-            all_tweets.append(tweet.text)
+        all_tweets.append(tweet.text)
+
 
     return ''.join(all_tweets)
