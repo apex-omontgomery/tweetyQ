@@ -1,0 +1,336 @@
+[1mdiff --git a/exampleProfile.json b/exampleProfile.json[m
+[1mdeleted file mode 100644[m
+[1mindex 5b6c5d1..0000000[m
+[1m--- a/exampleProfile.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,6941 +0,0 @@[m
+[31m-{[m
+[31m-   "contentItems": [[m
+[31m-      {[m
+[31m-         "content": "Wow, I liked @TheRock before, now I really SEE how special he is. The daughter story was IT for me. So great! #MasterClass",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1447639154000,[m
+[31m-         "id": "666073008692314113",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": ".@TheRock how did you Know to listen to your gut and Not go back to football? #Masterclass",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1447638226000,[m
+[31m-         "id": "666069114889179136",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": ".@TheRock moving back in with your parents so humbling. \" on the other side of your pain is something good if you can hold on\" #masterclass",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1447638067000,[m
+[31m-         "id": "666068446325665792",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Wow aren't you loving @TheRock and his candor? #Masterclass",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1447637459000,[m
+[31m-         "id": "666065895932973057",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @patt_t: @TheRock @Oprah @RichOnOWN @OWNTV this interview makes me like you as a fellow human even more for being so real.",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1447637030000,[m
+[31m-         "id": "666064097562247168",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "\"Be You\".. That's the best advice ever @TheRock #MastersClass",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1447636205000,[m
+[31m-         "id": "666060637181644800",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Supersoulers let's lift our spirits pray and hold Paris in the Light\ud83d\ude4f\ud83c\udffe",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1447602477000,[m
+[31m-         "id": "665919171062927360",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @DeepakChopra: What I learned in week 1: Become What You Believe 21-Day Meditation Experience - https:\/\/t.co\/kqaMaMqEUp #GoogleAlerts",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1447098990000,[m
+[31m-         "id": "663807393063538688",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Watching Bryan Stevenson on #SuperSoulSunday! \"You are not the worst mistake you ever made\".\nAren't we glad  about that.",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1446998643000,[m
+[31m-         "id": "663386507856736257",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": ".@CherylStrayed  BRAVE ENOUGH my new favorite thing! Gonna buy a copy for all my girls. #Perfectgift https:\/\/t.co\/gz1tnv8t8K",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1446915955000,[m
+[31m-         "id": "663039689360695296",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Stevie Wonder singing \"Happy Birthday to you!\" to my dear  mariashriver. A phenomenal woman and\u2026 https:\/\/t.co\/Ygm5eDIs4f",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1446881193000,[m
+[31m-         "id": "662893888080879616",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "It\u2019s my faaaaavorite time of the Year!  For the first time you can shop the list on @amazon! https:\/\/t.co\/a6GMvVrhjN https:\/\/t.co\/sJlQMROq5U",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1446744186000,[m
+[31m-         "id": "662319239844380672",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Incredible story \"the spirit of the Lord is on you\" thanks for sharing @smokey_robinson #Masterclass",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1446428929000,[m
+[31m-         "id": "660996956861280256",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Wasnt that incredible story about @smokey_robinson 's dad leaving his family at 12. #MasterClass",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1446426630000,[m
+[31m-         "id": "660987310889041920",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Gayle, Charlie, Nora @CBSThisMorning  Congratulations!  #1000thshow",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1446220097000,[m
+[31m-         "id": "660121050978611205",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "I believe your home should rise up to meet you. @TheEllenShow you nailed it with HOME.  Tweethearts, grab a copy! https:\/\/t.co\/iFMnpRAsno",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1446074433000,[m
+[31m-         "id": "659510090748182528",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Can I get a Witness?!\u270b\ud83c\udffe https:\/\/t.co\/tZ1QyAeSdE",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445821114000,[m
+[31m-         "id": "658447593865945089",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": ".@TheEllenShow you're a treasure.\nYour truth set a lot of people free.\n#Masterclass",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445821003000,[m
+[31m-         "id": "658447130026188800",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Hope you all are enjoying @TheEllenShow on #MasterClass.",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445820161000,[m
+[31m-         "id": "658443598313181188",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": ".@GloriaSteinem, shero to women everywhere, on how far we\u2019ve come and how far we need to go. #SuperSoulSunday 7p\/6c.\nhttps:\/\/t.co\/3e7oxXW02J",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445811545000,[m
+[31m-         "id": "658407457438363648",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @TheEllenShow: I told a story from my @OWNTV's #MasterClass on my show. Normally I\u2019d save it all for Sunday, but @Oprah made me. https:\/\u2026",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445804181000,[m
+[31m-         "id": "658376572521459712",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": ".@TheEllenShow is a master teacher of living her truth &amp; living authentically as herself. #MasterClass tonight 8\/7c.\nhttps:\/\/t.co\/iLT2KgRsSw",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445804072000,[m
+[31m-         "id": "658376116575449088",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": ".@SheriSalata , @jonnysinc @part2pictures . Tears of joy and gratitude to you and our entire #BeliefTeam We DID IT!! My heart is full.\ud83d\ude4f\ud83c\udffe\ud83d\ude4f\ud83c\udffe",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445734755000,[m
+[31m-         "id": "658085377140363264",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Donna and Bob saw the tape of their story just days before she passed. They appreciated it. #RIPDonna",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445734097000,[m
+[31m-         "id": "658082618819280896",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @rempower: .@Oprah this series allowed me to slide into people's lives around the world and see the same in them ... we all have a belie\u2026",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445732769000,[m
+[31m-         "id": "658077046858383360",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "All the stories moved me, My favorite line \" I must pass the stories on to my grandson otherwise our people will loose their way. #Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445732579000,[m
+[31m-         "id": "658076253618991104",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": ".@part2pictures some of your best imagery yet. Filming Alex on the rock.#Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445731782000,[m
+[31m-         "id": "658072908237934592",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "I just love Alex and his daring #Belief to live fully the present Moment.",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445731561000,[m
+[31m-         "id": "658071980982206464",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @GrowingOWN: Let's do this! #Belief finale tweet tweet party. Thank you @Oprah! \ud83d\ude4f",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445731248000,[m
+[31m-         "id": "658070668785770496",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @lizkinnell: The epic finale of #Belief on @OWNTV is about to start.  8\/et  Are you ready? What do you Believe?",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445731081000,[m
+[31m-         "id": "658069968534171648",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Thank you all for another beautiful night of Belief. Belief runs all day tomorrow for bingers and final episode!",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445648630000,[m
+[31m-         "id": "657724143115202560",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @OWNingLight: #Belief is the ultimate travel map to mass acceptance. \ud83d\ude4f\ud83c\udffb\u2764\ufe0f\ud83c\udf0d @Oprah",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445647285000,[m
+[31m-         "id": "657718501147197442",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "\" I can feel my heart opening and faith coming back in\".. What's better than that? #Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445646903000,[m
+[31m-         "id": "657716901951369218",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Hey Belief team mates can yo believe how quickly the week has passed? #Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445645633000,[m
+[31m-         "id": "657711572492533760",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Ran into @5SOS backstage. Fun times with @TheEllenShow today! https:\/\/t.co\/2PP3W3RzXc",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445618531000,[m
+[31m-         "id": "657597898394173440",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Thanks All for another great night of #BELIEF",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445572548000,[m
+[31m-         "id": "657405031822430208",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @3LWTV: #BecomeWhatYouBelieve New meditation w\/ @Oprah @DeepakChopra begins 11\/2  Register https:\/\/t.co\/x0R9HWTAX0 #Belief https:\/\/t.co\/\u2026",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445571500000,[m
+[31m-         "id": "657400636745510912",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Ok west coast let's do it! #belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445569367000,[m
+[31m-         "id": "657391689439404033",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Thank u kind gentleman who told me I had kale in my teeth. Was eating kale chips with  Quincy Jones. Went straight to @LairdLife party.",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445569296000,[m
+[31m-         "id": "657391393883619328",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Hello west coast twitterati.. See you at 8 for #Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445566144000,[m
+[31m-         "id": "657378171872874496",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Thank you all for another beautiful night.#Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445475948000,[m
+[31m-         "id": "656999861254918145",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "RT @PRanganathan: \"Transformation is the rule of the game. The universe is not standing still.\" - Marcelo @OWNTV @Oprah #Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445475602000,[m
+[31m-         "id": "656998409933451264",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "\"The Universe is not standing still.. The whole Universe is expanding\"  I love the dance between science and spirituality! #Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445475580000,[m
+[31m-         "id": "656998320133398528",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "\"Without our prayers and our songs we won't be here\" Apache leader.#Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445473768000,[m
+[31m-         "id": "656990717504393216",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "Notice her mother crying. She knows its last tine she will ever see her daughter.#Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445473150000,[m
+[31m-         "id": "656988127433637888",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "This final trial is unbelievable. Every hair gets pulled from her head one at a time. Now that is Something!!#Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445473063000,[m
+[31m-         "id": "656987763644891136",[m
+[31m-         "language": "en"[m
+[31m-      },[m
+[31m-      {[m
+[31m-         "content": "\"What my faith gives me no one can match\"#Belief",[m
+[31m-         "contenttype": "text/plain",[m
+[31m-         "created": 1445472961000,[m
+[31m-         "id": "656987336266223616",[m
+[
