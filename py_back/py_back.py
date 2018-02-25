@@ -5,6 +5,29 @@ from watsonHandler import WatsonHandler
 app = Flask(__name__)
 
 
+def compute_emotions(nlp_data):
+    emotionCount = 0 
+
+    emotions = {'anger': 0, 'disgust': 0, 'fear': 0, 'joy': 0, 'sadness': 0 }
+
+    for entity in nlp_data['keywords']:
+        if 'emotion' in entity:
+            emotions['anger'] += entity['emotion']['anger']
+            emotions['disgust'] += entity['emotion']['disgust']
+            emotions['fear'] += entity['emotion']['fear']
+            emotions['joy'] += entity['emotion']['joy']
+            emotions['sadness'] += entity['emotion']['sadness']
+            emotionCount += 1
+
+
+    emotions['anger'] /= emotionCount
+    emotions['disgust'] /= emotionCount
+    emotions['fear'] /= emotionCount
+    emotions['joy'] /= emotionCount
+    emotions['sadness'] /= emotionCount
+    return emotions
+
+
 @app.route('/tweet', methods=['GET', 'POST'])
 def user_analysis():
     json_data = request.get_json()
@@ -12,7 +35,14 @@ def user_analysis():
         return jsonify({'error': 'Bad User Params'}), 400
 
     print(json_data['text'])
-    json_data['nlp_data'] = WatsonHandler().nlu(json_data['text'])
+    nlp_data = WatsonHandler().nlu(json_data['text'])
+
+    # Compute 5 emotion values 
+    emotions = compute_emotions(nlp_data)
+
+    json_data['nlp_data'] = {
+        'emotions': emotions
+    } 
 
     return jsonify(json_data), 200
 
