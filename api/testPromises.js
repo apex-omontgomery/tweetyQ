@@ -4,6 +4,8 @@ console.log(' ')
 
 //Import Twitter API Wrapper for NodeJS
 var Twit = require('twit');
+var Bluebird = require('bluebird')
+var PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 
 //Twitter Credentials
 var T = new Twit({
@@ -14,6 +16,12 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
+var pi = new PersonalityInsightsV3({
+  username: 'bbd18d95-927e-46b1-9245-a0ca4e573fd9',
+  password: 'krBzGSyFWygP',
+  version_date: '2017-10-13'
+});
+
 var request = require("request");
 var userDetails;
 
@@ -21,41 +29,84 @@ const userQuery = () => {
     // Setting Parameters for request
     var tweetParams = {
       screen_name: '@realDonaldTrump', //@realDonaldTrump
-      count: 1,
+      count: 10,
       include_rts: false,
       exclude_replies: true
     }
 
-    return T.get(tweetParams)
-    .then(response=>{
-      return createPlainText(response)
-      // call watson api with response
+    return T.get('statuses/user_timeline', tweetParams)
+    .then((response) =>{
+      let fixedText = createPlainText(response.data)
+      console.log(fixedText);
+      var piParams = {
+        // Get the content from the JSON file.
+        content: fixedText,
+        content_type: 'text/plain',
+        // consumption_preferences: true,
+        // raw_scores: true
+      };
+      console.log('we are in watsonCall')
+      let response_after_callback = '';
+      pi.profile(piParams, function(err, response) {
+        console.log(JSON.stringify(response));
+      });
+      return null;
     })
-    .then(fixedText=> {
-        return watsonCall(fixedText);
+    .then((response) => {
+      console.log('GOT RESPONSE?')
+      console.log(response);
+      return JSON.stringify(response, null, 2); 
     })
+
+      // if (error)
+      //   console.log('Error:', error);
+      // else
+      //   console.log('>>>>>>>>>>>>>>>>>PI COMPLETE>>>>>>>>>>>>>>>');
+      //   console.log(JSON.stringify(response, null, 2));
+      //   response_after_callback = JSON.stringify(response, null, 2);
     .then(plainResponse => {
+        console.log('plainResponse is: ' + plainResponse)
         return plainResponse;
     })
     .catch(err => {
       return err
     })
-
-
 }
 
-const createPlainText = (twitterResponse) => {
+const createPlainText = (data) => {
 
   // return twitterResponse.reduce(first, accumulator=>{
   //   return(accumulator += first.text)
   //
   // }, '')
   var tweetHistory = '';
-  for(var i=0; i < twitterResponse.length; i++){
+  for(var i=0; i < data.length; i++){
     // console.log(data[i].text);
-    tweetHistory += twitterResponse[i].text+'\n';
+    tweetHistory += data[i].text+'\n';
   }
   return tweetHistory
+}
+
+const watsonCall = (text) => {
+  var piParams = {
+    // Get the content from the JSON file.
+    content: text,
+    content_type: 'text/plain',
+    // consumption_preferences: true,
+    // raw_scores: true
+  };
+  console.log('we are in watsonCall')
+  let response_after_callback = '';
+  const prof = pi.profile(piParams, function(error, response) {
+    if (error)
+      console.log('Error:', error);
+    else
+      console.log('>>>>>>>>>>>>>>>>>PI COMPLETE>>>>>>>>>>>>>>>');
+      // console.log(JSON.stringify(response, null, 2));
+      response_after_callback = JSON.stringify(response, null, 2);
+    }
+  )
+  return response_after_callback;
 }
 
 
