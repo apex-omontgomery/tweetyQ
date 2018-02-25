@@ -2,10 +2,24 @@
 const getAllTweetDoms = () => {
   let users = [];
   const allTweetElements = document.getElementsByClassName('tweet');
-
-  return Array.from(allTweetElements).map(singleTweet => {
+  tweets = Array.from(allTweetElements).map(singleTweet => {
     return tweetObjectBuilder(singleTweet);
   });
+  return {
+    tweets: tweets,
+    users: getUniqueUsers(tweets, 'userId')
+  };
+};
+
+// arr
+const getUniqueUsers = (arr, prop) => {
+  return arr
+    .map(element => {
+      return element[prop];
+    })
+    .filter((element, i, a) => {
+      return i === a.indexOf(element);
+    });
 };
 
 // get url, get text, get tweet id, get user id
@@ -32,11 +46,8 @@ const getSingleUrl = tweetObject => {
 
 const singleLevelTweetText = textObject => {
   (child = textObject[0].firstChild), (texts = []);
-  console.log(child);
   while (child) {
     if (child.nodeType == 3) {
-      console.log('child found');
-      console.log(child);
       texts.push(child.data);
     }
     child = child.nextSibling;
