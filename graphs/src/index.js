@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import Line from './components/Line/Line';
+//import Line from './components/Line/Line';
 import Bar from './components/Bar/Bar';
 import { render } from 'react-dom';
+import data from './components/Bar/data.json';
 
 class Menu extends Component {
   constructor() {
     super();
     this.state = {
-      boolDisplayLine: true,
-      boolDisplayBar: false
+      boolDisplayLine: false,
+      boolDisplayBar: true
     };
   }
 
@@ -46,7 +47,8 @@ class Menu extends Component {
             </button>
           </div>
         </div>
-        {this.state.boolDisplayLine ? <Line /> : <Bar />}
+        <Bar data={data} />
+        {/* {this.state.boolDisplayLine ? <Line /> : <Bar />} */}
       </div>
     );
   }
