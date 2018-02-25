@@ -5,17 +5,15 @@ from watsonHandler import WatsonHandler
 app = Flask(__name__)
 
 
-@app.route('/tweet',  methods=['GET', 'POST'])
+@app.route('/tweet', methods=['GET', 'POST'])
 def user_analysis():
     json_data = request.get_json()
     if not json_data and 'text' not in json_data.keys():
-        return jsonify({'error':'Bad User Params'}), 400
+        return jsonify({'error': 'Bad User Params'}), 400
 
     json_data['nlp_data'] = WatsonHandler().tone(json_data['text'])
 
-
     return jsonify(json_data), 200
-
 
 
 @app.route('/user', methods=['GET', 'POST'])
@@ -23,7 +21,7 @@ def tweet_analysis():
     json_data = request.get_json()
 
     if not json_data and 'user_id' not in json_data.keys():
-        return jsonify({'error':'Bad User Params'}), 400
+        return jsonify({'error': 'Bad User Params'}), 400
 
     tweet_value = get_tweets(json_data['user_id'])
 
