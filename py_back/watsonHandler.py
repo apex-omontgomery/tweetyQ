@@ -1,4 +1,5 @@
 from watson_developer_cloud import ToneAnalyzerV3, PersonalityInsightsV3
+from singleTweet import nluRun
 
 v_dict = {'version': '2017-09-21',
           'username': 'a6f558d8-06d2-45a7-93a7-5c358290b6a4',
@@ -20,3 +21,6 @@ class WatsonHandler:
         tone_analyzer = ToneAnalyzerV3(**v_dict)
         return tone_analyzer.tone(tone_input=tweet,
                                   content_type="text/plain")
+
+    def nlu(self, tweet):
+        return nluRun(tweet)
