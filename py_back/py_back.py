@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
 from twitter_interact import get_tweets
 from watsonHandler import WatsonHandler
+import requests
+import random 
+from profanity import profanity
 
 app = Flask(__name__)
 
@@ -34,17 +37,31 @@ def user_analysis():
     if not json_data and 'text' not in json_data.keys():
         return jsonify({'error': 'Bad User Params'}), 400
 
-    print(json_data['text'])
     nlp_data = WatsonHandler().nlu(json_data['text'])
 
     # Compute 5 emotion values 
     emotions = compute_emotions(nlp_data)
 
-    inappropriate_spectrum = (emotions['anger'] + emotions['disgust']) / 2
+    # Improve this heuristic if time
+    inappropriate_emotion_heuristic = (emotions['anger'] + emotions['disgust']) / 2
+    contains_profanity = profanity.contains_profanity(json_data['text'])
+    profanity_value = random.uniform(0.0, 0.1)
+    if contains_profanity:
+        profanity_value += .9
+
+    inappropriate_spectrum = max(inappropriate_emotion_heuristic, profanity_value)
+
+    clickbaitiness = 0
+    try:
+        originality = requests.get('http://127.0.0.1:5001/detect', params={'headline': json_data['text']}).json()
+        clickbaitiness = float(originality['clickbaitiness'])
+    except:
+        clickbaitiness = .1
 
     json_data['nlp_data'] = {  
         'emotions': emotions,
-        'inappropriateness': inappropriate_spectrum
+        'inappropriateness': inappropriate_spectrum,
+        'clickbaitiness': clickbaitiness
     } 
 
     return jsonify(json_data), 200
