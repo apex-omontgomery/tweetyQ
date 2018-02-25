@@ -17,33 +17,65 @@ var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-lan
 var PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
-//Parameters for Twitter to look for in the users timeline
-var tweetParams = {
-  screen_name: '@aRaffaBot',
-  count: 10,
-  include_rts: false
+function start(){
+  //Parameters for Twitter to look for in the users timeline
+  var tweetParams = {
+    screen_name: '@realDonaldTrump',
+    count: 100,
+    include_rts: false,
+    exclude_replies: true
+  }
+
+  //Get the users tweet histry based on the parameters above
+  T.get('statuses/user_timeline', tweetParams, getText)
+
+  function getText(error, data, response) {
+    if (!error) {
+      var tweetHistory = '';
+      for(var i=0; i < data.length; i++){
+        // console.log(data[i].text);
+        tweetHistory += data[i].text+'\n';
+      }
+      console.log(tweetHistory);
+      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TONE ANALYZER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      var tone_analyzer = new ToneAnalyzerV3({
+        username: 'a6f558d8-06d2-45a7-93a7-5c358290b6a4',
+        password: 'AaRIysTakCa6',
+        version_date: '2017-09-21'
+      });
+
+      var taParams = {
+        'tone_input': tweetHistory,
+        'content_type': 'text/plain'
+      };
+
+
+      tone_analyzer.tone(taParams, function(error, response) {
+        if (error)
+          console.log('error:', error);
+        else
+          console.log(JSON.stringify(response, null, 2));
+        }
+      );
+      // return tweetHistory
+    }
+    else{
+      console.log(error);
+    }
+  };
 }
 
-//Get the users tweet histry based on the parameters above
-T.get('statuses/user_timeline', tweetParams, function(error, data, response) {
-  if (!error) {
-    for(var i=0; i < data.length; i++){
-      console.log(data[i].text);
-    }
-  }
-  else{
-    console.log(error);
-  }
-});
+start()
 
+// console.log(a);
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TONE ANALYZER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-var tone_analyzer = new ToneAnalyzerV3({
-  username: 'a6f558d8-06d2-45a7-93a7-5c358290b6a4',
-  password: 'AaRIysTakCa6',
-  version_date: '2017-09-21'
-});
-
+// var tone_analyzer = new ToneAnalyzerV3({
+//   username: 'a6f558d8-06d2-45a7-93a7-5c358290b6a4',
+//   password: 'AaRIysTakCa6',
+//   version_date: '2017-09-21'
+// });
+//
 // var taParams = {
 //   'tone_input': require('../toneExample.json'),
 //   'content_type': 'application/json'
