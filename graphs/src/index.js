@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Line from './Line';
-import Bar from './Bar';
+import Line from './components/Line/Line';
+import Bar from './components/Bar/Bar';
 import { render } from 'react-dom';
 
 class Menu extends Component {
