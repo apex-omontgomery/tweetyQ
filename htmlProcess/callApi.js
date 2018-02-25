@@ -1,6 +1,6 @@
 urlMain = 'https://127.0.0.1:5000';
 
-const callApiBase = route => {
+const callApiBase = (route, json) => {
   fetch(`{urlMain}/{route}`, {
     method: 'post',
     headers: {
@@ -14,11 +14,11 @@ const callApiBase = route => {
 };
 
 const callUser = json => {
-  return callApiBase('user');
+  return callApiBase('user', json);
 };
 
 const callTweet = json => {
-  return callApiBase('tweet');
+  return callApiBase('tweet', json);
 };
 
 userJson = { user_id: '123452334' };
