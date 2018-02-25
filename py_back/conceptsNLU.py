@@ -17,10 +17,14 @@ natural_language_understanding = NaturalLanguageUnderstandingV1(
   password= "tLrq6dXUA1D5",
   version='2017-02-27')
 
-def getInfo():
-    print(api.user_timeline([barrirafferty][0]))
-
-getInfo()
+def getInfo(user_id):
+    tweets = []
+    tweets = api.user_timeline(user_id=user_id, count =150)
+    n = ' '
+    for tweet in tweets:
+        # nluRun(tweet.text)
+        n += tweet.text + ' '
+    nluRun(n)
 
 def nluRun(txt):
     response = natural_language_understanding.analyze(
@@ -39,9 +43,12 @@ def nluRun(txt):
     )
 
     for x in range(0,len(response["concepts"])):
-        print(json.dumps(response["concepts"][x]["text"], indent=2))
-        print(json.dumps(response["concepts"][x]["relevance"], indent=2))
+        print(x)
+        print(response["concepts"][x]["text"])
+        print(response["concepts"][x]["relevance"])
+
+getInfo('25073877')
 
 
-tweet = 'IBM is an American multinational technology company headquartered in Armonk, New York, United States, with operations in over 170 countries.'
-nluRun(tweet)
+# tweet = 'IBM is an American multinational technology company headquartered in Armonk, New York, United States, with operations in over 170 countries.'
+# nluRun(tweet)
