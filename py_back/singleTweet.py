@@ -21,8 +21,5 @@ def nluRun(txt):
           emotion=True,
           sentiment=True,
           limit=3)))
-    print(json.dumps(response, indent=2))
-    return(response)
+    return response
 
-tweet = "I'm like hey what's up hello"
-nluRun(tweet)
