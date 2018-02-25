@@ -1,11 +1,8 @@
 import json
+import tweepy
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 \
-  import Features, EntitiesOptions, KeywordsOptions
-
-#Twitter Login Credentials
-auth = tweepy.OAuthHandler('XAjruRZe6O6gen4zGLJL5VTbw', 'vw3a8tb1AnMXEEUI3HXt7Xq5CpvjB0LNEtmAf5PmJCZYkQ3RPq')
-auth.set_access_token('906982976344481794-7Nbvj6fCqkcTHNVoaepvq6iIMIJxc8G', 'sDFWRJDAcscgFkGf0Sp1M4iPB0K5FLMwW6ck2y3ANMy9a')
+  import Features, EntitiesOptions, KeywordsOptions, ConceptsOptions
 
 #Watson Login Credentials
 natural_language_understanding = NaturalLanguageUnderstandingV1(
@@ -24,9 +21,15 @@ def nluRun(txt):
         keywords=KeywordsOptions(
           emotion=True,
           sentiment=True,
-          limit=3)))
-    print(json.dumps(response, indent=2))
-    return(response)
+          limit=3),
+        concepts=ConceptsOptions(
+          limit=3))
+    )
 
-tweet = "I'm like hey what's up hello"
+    for x in range(0,len(response["concepts"])):
+        print(json.dumps(response["concepts"][x]["text"], indent=2))
+        print(json.dumps(response["concepts"][x]["relevance"], indent=2))
+
+
+tweet = 'IBM is an American multinational technology company headquartered in Armonk, New York, United States, with operations in over 170 countries.'
 nluRun(tweet)
