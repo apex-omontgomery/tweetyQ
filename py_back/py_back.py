@@ -40,8 +40,11 @@ def user_analysis():
     # Compute 5 emotion values 
     emotions = compute_emotions(nlp_data)
 
-    json_data['nlp_data'] = {
-        'emotions': emotions
+    inappropriate_spectrum = (emotions['anger'] + emotions['disgust']) / 2
+
+    json_data['nlp_data'] = {  
+        'emotions': emotions,
+        'inappropriateness': inappropriate_spectrum
     } 
 
     return jsonify(json_data), 200
