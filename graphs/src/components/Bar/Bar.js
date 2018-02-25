@@ -10,9 +10,8 @@ class Bar extends React.Component {
     console.log(this.props);
   }
 
-  componetWillMount() {
+  componentWillMount() {
     const reducedData = this.collectData(this.props.data);
-    console.log(this.reducedData);
     const labels = reducedData.map(item => {
       return item.name;
     });
@@ -20,17 +19,16 @@ class Bar extends React.Component {
     const vals = reducedData.map(item => {
       return item.average;
     });
-    console.log(vals);
-    console.log(labels);
     this.setState({ dataObject: this.chartData(vals, labels) });
   }
 
   splitDataObject = dataObject => {};
   collectData = dataMetricsArray => {
-    let listObjects = Array.prototype.concat.apply([
+    let listObjects = Array.prototype.concat.apply(
+      [],
       this.extractKeywords(dataMetricsArray.entities),
       this.extractKeywords(dataMetricsArray.keywords)
-    ]);
+    );
     return this.avgListObjects(listObjects);
   };
 
