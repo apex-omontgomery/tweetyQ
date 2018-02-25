@@ -6,11 +6,11 @@ const request = require('request');
 app.use(bodyParser.json());
 
 function rateAppropriate(content) {
-	
+
 }
 
 function rateSpam(content) {
-	
+
 }
 
 function analyzeTweetWrapper(tweet) {
@@ -67,13 +67,97 @@ app.post('/link', (request, response) => {
 // Single tweet
 // Requires: {text}
 app.post('/tweet', (request, response) => {
-	const tweet = request.body;
+	const tweet = {
+  "userId": "101431978",
+  "tweetId": "967231090267013121",
+  "text":
+    "See and the metaclass that lets you do that *without* the PEP: {{url}} ",
+  "url": "https://t.co/3y6wN1YbHC",
+  "nlpData": {
+    "usage": {
+      "text_units": 2,
+      "text_characters": 165,
+      "features": 4
+    },
+    "relations": [],
+    "language": "en",
+    "keywords": [
+      {
+        "text": "Im loving",
+        "sentiment": {
+          "score": 0.475873,
+          "label": "positive"
+        },
+        "relevance": 0.903466,
+        "emotion": {
+          "sadness": 0.053154,
+          "joy": 0.752848,
+          "fear": 0.027472,
+          "disgust": 0.020698,
+          "anger": 0.022693
+        }
+      },
+      {
+        "text": "global warming",
+        "sentiment": {
+          "score": 0.475873,
+          "label": "positive"
+        },
+        "relevance": 0.75528,
+        "emotion": {
+          "sadness": 0.053154,
+          "joy": 0.752848,
+          "fear": 0.027472,
+          "disgust": 0.020698,
+          "anger": 0.022693
+        }
+      }
+    ],
+    "entities": [
+      {
+        "type": "Location",
+        "text": "New York",
+        "sentiment": {
+          "score": 0,
+          "label": "neutral"
+        },
+        "relevance": 0.4779,
+        "emotion": {
+          "sadness": 0.282889,
+          "joy": 0.308959,
+          "fear": 0.114469,
+          "disgust": 0.048509,
+          "anger": 0.052576
+        },
+        "disambiguation": {
+          "subtype": ["City"]
+        },
+        "count": 1
+      }
+    ],
+    "concepts": [
+      {
+        "text": "Toronto",
+        "relevance": 0.903152,
+        "dbpedia_resource": "http://dbpedia.org/resource/Toronto"
+      },
+      {
+        "text": "Global warming",
+        "relevance": 0.79672,
+        "dbpedia_resource": "http://dbpedia.org/resource/Global_warming"
+      }
+    ]
+  }
+}
+	response.setHeader('Content-Type', 'application/json');
+	response.end(JSON.stringify(tweet));	
+
 	// Call tweet function
-	analyzeTweetWrapper(tweet)
-	.then((tweetAnalysis) => {
-		response.setHeader('Content-Type', 'application/json');
-		response.end(JSON.stringify(tweetAnalysis));
-	});
+	// analyzeTweetWrapper(tweet)
+	// .then((tweetAnalysis) => {
+	// 	response.setHeader('Content-Type', 'application/json');
+	// 	response.end(JSON.stringify(tweetAnalysis));
+	// });
 });
 
 // Multiple tweets
