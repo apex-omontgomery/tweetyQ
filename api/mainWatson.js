@@ -2,10 +2,40 @@ console.log(' ')
 console.log('The bot is coming alive...');
 console.log(' ')
 
+var Twit = require('twit');
+
+var T = new Twit({
+  consumer_key:         'XAjruRZe6O6gen4zGLJL5VTbw',
+  consumer_secret:      'vw3a8tb1AnMXEEUI3HXt7Xq5CpvjB0LNEtmAf5PmJCZYkQ3RPq',
+  access_token:         '906982976344481794-7Nbvj6fCqkcTHNVoaepvq6iIMIJxc8G',
+  access_token_secret:  'sDFWRJDAcscgFkGf0Sp1M4iPB0K5FLMwW6ck2y3ANMy9a',
+  timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+});
+
 //Import natural language understanding tools from Watson
 var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
 var PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+
+//Parameters for Twitter to look for in the users timeline
+var tweetParams = {
+  screen_name: '@aRaffaBot',
+  count: 10,
+  include_rts: false
+}
+
+//Get the users tweet histry based on the parameters above
+T.get('statuses/user_timeline', tweetParams, function(error, data, response) {
+  if (!error) {
+    for(var i=0; i < data.length; i++){
+      console.log(data[i].text);
+    }
+  }
+  else{
+    console.log(error);
+  }
+});
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TONE ANALYZER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 var tone_analyzer = new ToneAnalyzerV3({
@@ -14,19 +44,19 @@ var tone_analyzer = new ToneAnalyzerV3({
   version_date: '2017-09-21'
 });
 
-var params = {
-  'tone_input': require('../toneExample.json'),
-  'content_type': 'application/json'
-};
-
-
-tone_analyzer.tone(params, function(error, response) {
-  if (error)
-    console.log('error:', error);
-  else
-    console.log(JSON.stringify(response, null, 2));
-  }
-);
+// var taParams = {
+//   'tone_input': require('../toneExample.json'),
+//   'content_type': 'application/json'
+// };
+//
+//
+// tone_analyzer.tone(taParams, function(error, response) {
+//   if (error)
+//     console.log('error:', error);
+//   else
+//     console.log(JSON.stringify(response, null, 2));
+//   }
+// );
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>PERSONALITY INSIGHT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //What it does
@@ -47,8 +77,8 @@ var pi = new PersonalityInsightsV3({
 //   // Get the content from the JSON file.
 //   content: require('../exampleProfile.json'),
 //   content_type: 'application/json',
-//   consumption_preferences: true,
-//   raw_scores: true
+//   // consumption_preferences: true,
+//   // raw_scores: true
 // };
 //
 // pi.profile(piParams, function(error, response) {
@@ -68,11 +98,11 @@ var pi = new PersonalityInsightsV3({
 // And the service will output:
 // Extracted metadata in JSON format
 //Natural Language Login Info
-var nlu = new NaturalLanguageUnderstandingV1({
-  "username": "3ca320cb-0473-4ae1-9d63-a72d139c27c2",
-  "password": "tLrq6dXUA1D5",
-  'version_date': '2017-02-27'
-});
+// var nlu = new NaturalLanguageUnderstandingV1({
+//   "username": "3ca320cb-0473-4ae1-9d63-a72d139c27c2",
+//   "password": "tLrq6dXUA1D5",
+//   'version_date': '2017-02-27'
+// });
 
 //Parameters
 // var nluParameters = {
