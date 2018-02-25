@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Spot Corrector</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/animate.css">
+
+  <script src="js/progressbar.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+  <div class="container">
+      <div class="sidebar">
+        <div class="option">
+          <img src="assets/home.png" class='home' >
+        </div>
+        <div class="option" id="pushup">
+          <a href="index.html">
+            <img src="assets/pushup.png" class='home' >
+          </a>
+        </div>
+        <div class="option" id="squat">
+          <a href="squat.html">
+          <img src="assets/squat.png" class='home' >
+        </a>
+        </div>
+        <div class="option">
+          <img src="assets/situp.png" class='home' >
+        </div>
+        <div class="option">
+          <img src="assets/pullup.png" class='home' >
+        </div>
+        <div class="option">
+          <a href="chart.html">
+
+          <img src="assets/selectedChart.png" class='home' >
+        </a>
+        </div>
+      </div>
+      <div class='header'>Push-Up Overview</div>
+      <div class="box data1" id="data1">
+        <div class="header1">Overall Stats</div>
+        <div class="statRow">
+          <img src="assets/miniTime.png" class='miniIcon' />
+          <div class="statText">Hours: <span id="hours">4</span></div>
+          <img src="assets/miniTime.png" class='miniIcon' />
+        </div>
+        <div class="statRow">
+          <img src="assets/miniPushups.png" class='miniIcon' />
+          <div class="statText">Reps: <span id="reps">4</span></div>
+          <img src="assets/miniPushups.png" class='miniIcon' />
+        </div>
+        <div class="statRow">
+          <img src="assets/miniChart.png" class='miniIcon' />
+          <div class="statText">Hours: <span id="hours">4</span></div>
+          <img src="assets/miniChart.png" class='miniIcon' />
+        </div>
+      </div>
+      <div class="box data2" id="data2">
+        <canvas id="myChart2" width="90" height="70"></canvas>
+      </div>
+      <div class="box data3" id="data3">
+        <div class="box1">
+          <div id="score1" class="score">
+          </div>
+          <div class="infoStack noFade">
+            <div>Back Score</div>
+            <div>0.79</div>
+          </div>
+        </div>
+        <div class="box2">
+          <div id="score2" class="score"></div>
+          <div class="infoStack noFade">
+            <div>Balance Score</div>
+            <div>0.79</div>
+          </div>
+        </div>
+        <div class="box3">
+          <div id="score3" class="score"></div>
+          <div class="infoStack noFade">
+            <div>Completion Score</div>
+            <div>0.79</div>
+          </div>
+        </div>
+      </div>
+      <div class="box data4" id="data4">
+        <canvas id="myChart3" width="100%" height="23vh"></canvas>
+      </div>
+  </div>
+
+  <script src="js/index.js"></script>
+</body>
+
+</html>
