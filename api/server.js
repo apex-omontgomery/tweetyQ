@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-
+const url = require('url');
+const request = require('request');
 app.use(bodyParser.json());
 
 
@@ -16,10 +17,32 @@ function analyzeUserWrapper(userId) {
 	return dummy_response; // replace with real user analysis
 }
 
-function analyzeLinkWrapper(url) {
+function serialize(obj) {
+  var str = [];
+  for(var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
 
-	const dummy_response = {'factual': .6, 'emotional': .3, 'clickbait': .1};
-	return dummy_response; // replace with link/article analysis
+function analyzeLinkWrapper(url, callback) {
+	// Replace with url variable
+	const keys = {
+		'SM_API_KEY': 'C016AF449A', 
+		'SM_URL': 'https://thinkprogress.org/corporations-nra-f0d8074f2ca7/'
+	} 
+
+	const summary_url = "https://api.smmry.com/?" + serialize(keys);
+	console.log(summary_url);
+ 	request.get(summary_url, (error, response, body) => {
+ 		json = JSON.parse(body);
+ 		console.log(json.sm_api_content)
+ 		// console.log(response);
+ 		const summary = json.sm_api_content;	
+		const dummy_response = {'summary': summary, 'factual': 6, 'emotional': .3, 'clickbait': .1};
+ 		callback(dummy_response);
+ 	});
 }
 
 // Single url
@@ -27,10 +50,11 @@ app.post('/link', (request, response) => {
 	console.log(request.body);
 	const json = request.body;
 
-	const linkData = analyzeLinkWrapper(request.body.url);
-	json.sentimentValue = linkData;	
-	response.setHeader('Content-Type', 'application/json');
-	response.end(JSON.stringify(json));
+	const linkData = analyzeLinkWrapper('', function callback(linkData) {
+		json.sentimentValue = linkData;	
+		response.setHeader('Content-Type', 'application/json');
+		response.end(JSON.stringify(json));
+	});
 });	
 
 // Single tweet
@@ -61,6 +85,7 @@ app.post('/tweets', (request, response) => {
 // Requires: userid
 app.post('/user', (request, response) => {
 	const userAnalysis = analyzeUserWrapper(request.body.userId);
+
 	response.setHeader('Content-Type', 'application/json');
 	response.end(JSON.stringify(userAnalysis));
 });
