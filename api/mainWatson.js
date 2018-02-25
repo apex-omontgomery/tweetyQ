@@ -44,8 +44,8 @@ var nlu = new NaturalLanguageUnderstandingV1({
 function start(){
   //Parameters for Twitter to look for in the users timeline
   var tweetParams = {
-    screen_name: '@realDonaldTrump',
-    count: 1,
+    screen_name: '@dril',
+    count: 100,
     include_rts: false,
     exclude_replies: true
   }
@@ -72,6 +72,11 @@ function start(){
         if (error)
           console.log('error:', error);
         else
+        for(var i=0; i < data.length; i++){
+          if(response[1].sentence_tone[i].score >= 0.6){
+            console.log();
+          }
+        }
           console.log(JSON.stringify(response, null, 2));
           console.log('>>>>>>>>>>>>>>>>>TA COMPLETE>>>>>>>>>>>>>>>');
         }
@@ -90,7 +95,8 @@ function start(){
           console.log('Error:', error);
         else
           // console.log(JSON.stringify(response, null, 2));
-          console.log('>>>>>>>>>>>>>>>>>PI COMPLETE>>>>>>>>>>>>>>>');
+          // console.log('>>>>>>>>>>>>>>>>>PI COMPLETE>>>>>>>>>>>>>>>');
+          console.log('>>>>>>>>>>>>>>>>>PI NOT PRINTED>>>>>>>>>>>>>>>');
         }
       );
     }
@@ -166,31 +172,31 @@ start()
 // Extracted metadata in JSON format
 
 // Parameters
-var nluParameters = {
-  'text': 'Love all Asians',
-  'features': {
-    'entities': {
-      'emotion': true,
-      'sentiment': true,
-      'limit': 2
-    },
-    'keywords': {
-      'emotion': true,
-      'sentiment': true,
-      'limit': 2
-    },
-    'concepts':{
-      'limit': 3
-    },
-    'relations':{}
-  }
-}
-
-//error control and resoonse
-nlu.analyze(nluParameters, function(err, response) {
-  if (err)
-    console.log('error:', err);
-  else
-    // console.log(JSON.stringify(response, null, 2));
-    console.log('>>>>>>>>>>>>>>>>>>NLU COMPLETE>>>>>>>>>>>>>>>>>>>>>');
-});
+// var nluParameters = {
+//   'text': 'Love all Asians',
+//   'features': {
+//     'entities': {
+//       'emotion': true,
+//       'sentiment': true,
+//       'limit': 2
+//     },
+//     'keywords': {
+//       'emotion': true,
+//       'sentiment': true,
+//       'limit': 2
+//     },
+//     'concepts':{
+//       'limit': 3
+//     },
+//     'relations':{}
+//   }
+// }
+//
+// //error control and resoonse
+// nlu.analyze(nluParameters, function(err, response) {
+//   if (err)
+//     console.log('error:', err);
+//   else
+//     // console.log(JSON.stringify(response, null, 2));
+//     console.log('>>>>>>>>>>>>>>>>>>NLU COMPLETE>>>>>>>>>>>>>>>>>>>>>');
+// });

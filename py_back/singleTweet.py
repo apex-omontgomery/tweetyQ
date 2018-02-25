@@ -1,3 +1,5 @@
+#This script analyzes the NL of a single tweet form a single user using WATSON AI NLU API
+
 import json
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 \
@@ -22,4 +24,3 @@ def nluRun(txt):
           sentiment=True,
           limit=3)))
     return response
-
