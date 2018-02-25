@@ -14,7 +14,7 @@ from json import dumps
 class WatsonHandler:
 
     def profile_data(self, full_tweet_string):
-        print(full_tweet_string)
+
         # Get recent tweets from user
         personality_insights = PersonalityInsightsV3(**d_dict)
         return personality_insights.profile(content=full_tweet_string, content_type='text/plain',

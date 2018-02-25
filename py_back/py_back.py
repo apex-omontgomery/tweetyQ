@@ -11,7 +11,7 @@ def user_analysis():
     if not json_data and 'text' not in json_data.keys():
         return jsonify({'error':'Bad User Params'}), 400
 
-    json_data['personality_data'] = WatsonHandler().tone(json_data['text'])
+    json_data['nlp_data'] = WatsonHandler().tone(json_data['text'])
 
 
     return jsonify(json_data), 200
