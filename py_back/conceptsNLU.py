@@ -50,9 +50,13 @@ def nluRun(txt):
 #Prints the relevant texts and scores, len() is used because earlier it looped each tweet individually then we
 #compressed them all to one string
     for x in range(0,len(response["concepts"])):
-        print(x)
-        print(response["concepts"][x]["text"])
-        print(response["concepts"][x]["relevance"])
+        # print(x)
+        con = response["concepts"][x]["text"]
+        rel = response["concepts"][x]["relevance"]
+        # print(response["concepts"][x]["text"])
+        # print(response["concepts"][x]["relevance"])
+        sendArray = {'Concept': con, 'Relevance': rel}
+        print(sendArray)
 
 #Call function with user id
 # getInfo(user_id)
