@@ -2,8 +2,10 @@ console.log(' ')
 console.log('The bot is coming alive...');
 console.log(' ')
 
+//Import Twitter API Wrapper for NodeJS
 var Twit = require('twit');
 
+//Twitter Credentials
 var T = new Twit({
   consumer_key:         'XAjruRZe6O6gen4zGLJL5VTbw',
   consumer_secret:      'vw3a8tb1AnMXEEUI3HXt7Xq5CpvjB0LNEtmAf5PmJCZYkQ3RPq',
@@ -17,11 +19,33 @@ var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-lan
 var PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
+//Login Credentials for IBM WATSON SERVICES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+var tone_analyzer = new ToneAnalyzerV3({
+  username: 'a6f558d8-06d2-45a7-93a7-5c358290b6a4',
+  password: 'AaRIysTakCa6',
+  version_date: '2017-09-21'
+});
+
+var pi = new PersonalityInsightsV3({
+  username: 'bbd18d95-927e-46b1-9245-a0ca4e573fd9',
+  password: 'krBzGSyFWygP',
+  version_date: '2017-10-13'
+});
+
+// Natural Language Login Info
+var nlu = new NaturalLanguageUnderstandingV1({
+  "username": "3ca320cb-0473-4ae1-9d63-a72d139c27c2",
+  "password": "tLrq6dXUA1D5",
+  'version_date': '2017-02-27'
+});
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+//Startup with this function
 function start(){
   //Parameters for Twitter to look for in the users timeline
   var tweetParams = {
     screen_name: '@realDonaldTrump',
-    count: 100,
+    count: 1,
     include_rts: false,
     exclude_replies: true
   }
@@ -29,6 +53,7 @@ function start(){
   //Get the users tweet histry based on the parameters above
   T.get('statuses/user_timeline', tweetParams, getText)
 
+  //This function takes all the tweet content and makes it into a string and then runs Watson
   function getText(error, data, response) {
     if (!error) {
       var tweetHistory = '';
@@ -38,26 +63,36 @@ function start(){
       }
       console.log(tweetHistory);
       //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TONE ANALYZER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      var tone_analyzer = new ToneAnalyzerV3({
-        username: 'a6f558d8-06d2-45a7-93a7-5c358290b6a4',
-        password: 'AaRIysTakCa6',
-        version_date: '2017-09-21'
-      });
-
       var taParams = {
         'tone_input': tweetHistory,
         'content_type': 'text/plain'
       };
-
 
       tone_analyzer.tone(taParams, function(error, response) {
         if (error)
           console.log('error:', error);
         else
           console.log(JSON.stringify(response, null, 2));
+          console.log('>>>>>>>>>>>>>>>>>TA COMPLETE>>>>>>>>>>>>>>>');
         }
       );
-      // return tweetHistory
+      //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PERSONALITY INSIGHT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      var piParams = {
+        // Get the content from the JSON file.
+        content: tweetHistory,
+        content_type: 'text/plain',
+        // consumption_preferences: true,
+        // raw_scores: true
+      };
+
+      pi.profile(piParams, function(error, response) {
+        if (error)
+          console.log('Error:', error);
+        else
+          // console.log(JSON.stringify(response, null, 2));
+          console.log('>>>>>>>>>>>>>>>>>PI COMPLETE>>>>>>>>>>>>>>>');
+        }
+      );
     }
     else{
       console.log(error);
@@ -99,11 +134,11 @@ start()
 // A tree of cognitive and social characteristics in JSON or CSV format
 
 //Personality Insight Login
-var pi = new PersonalityInsightsV3({
-  username: 'bbd18d95-927e-46b1-9245-a0ca4e573fd9',
-  password: 'krBzGSyFWygP',
-  version_date: '2017-10-13'
-});
+// var pi = new PersonalityInsightsV3({
+//   username: 'bbd18d95-927e-46b1-9245-a0ca4e573fd9',
+//   password: 'krBzGSyFWygP',
+//   version_date: '2017-10-13'
+// });
 //
 // var piParams = {
 //   // Get the content from the JSON file.
@@ -129,38 +164,33 @@ var pi = new PersonalityInsightsV3({
 //
 // And the service will output:
 // Extracted metadata in JSON format
-//Natural Language Login Info
-// var nlu = new NaturalLanguageUnderstandingV1({
-//   "username": "3ca320cb-0473-4ae1-9d63-a72d139c27c2",
-//   "password": "tLrq6dXUA1D5",
-//   'version_date': '2017-02-27'
-// });
 
-//Parameters
-// var nluParameters = {
-//   'text': '74 degrees here in New York today, in the middle of February. Im loving this global warming, temporarily of course, until it turns back into global cooling next week',
-//   'features': {
-//     'entities': {
-//       'emotion': true,
-//       'sentiment': true,
-//       'limit': 2
-//     },
-//     'keywords': {
-//       'emotion': true,
-//       'sentiment': true,
-//       'limit': 2
-//     },
-//     'concepts':{
-//       'limit': 3
-//     },
-//     'relations':{}
-//   }
-// }
-//
-// //error control and resoonse
-// nlu.analyze(nluParameters, function(err, response) {
-//   if (err)
-//     console.log('error:', err);
-//   else
-//     console.log(JSON.stringify(response, null, 2));
-// });
+// Parameters
+var nluParameters = {
+  'text': 'Love all Asians',
+  'features': {
+    'entities': {
+      'emotion': true,
+      'sentiment': true,
+      'limit': 2
+    },
+    'keywords': {
+      'emotion': true,
+      'sentiment': true,
+      'limit': 2
+    },
+    'concepts':{
+      'limit': 3
+    },
+    'relations':{}
+  }
+}
+
+//error control and resoonse
+nlu.analyze(nluParameters, function(err, response) {
+  if (err)
+    console.log('error:', err);
+  else
+    // console.log(JSON.stringify(response, null, 2));
+    console.log('>>>>>>>>>>>>>>>>>>NLU COMPLETE>>>>>>>>>>>>>>>>>>>>>');
+});
