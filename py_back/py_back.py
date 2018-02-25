@@ -4,7 +4,7 @@ from watsonHandler import WatsonHandler
 import requests
 import random 
 from profanity import profanity
-
+from conceptsNLU import getConcepts
 app = Flask(__name__)
 
 
@@ -76,7 +76,34 @@ def tweet_analysis():
 
     tweet_value = get_tweets(json_data['user_id'])
 
-    json_data['personality_data'] = WatsonHandler().profile_data(tweet_value)
+    pi_data = WatsonHandler().profile_data(tweet_value) 
+    json_data['personality_data'] = pi_data
+
+    # getConcepts(json_data['user_id'])
+    nlp_data = WatsonHandler().nlu(tweet_value)
+
+    # Compute 5 emotion values 
+    emotions = compute_emotions(nlp_data)
+
+    # Improve this heuristic if time
+    inappropriate_emotion_heuristic = (emotions['anger'] + emotions['disgust']) / 2
+    contains_profanity = profanity.contains_profanity(tweet_value)
+    profanity_value = random.uniform(0.0, 0.1)
+    if contains_profanity:
+        profanity_value += .9
+
+    inappropriate_spectrum = max(inappropriate_emotion_heuristic, profanity_value)
+
+    clickbaitiness = 0
+    try:
+        originality = requests.get('http://127.0.0.1:5001/detect', params={'headline': tweet_value}).json()
+        clickbaitiness = float(originality['clickbaitiness'])
+    except:
+        clickbaitiness = .1
+
+
+    json_data['inappropriateness'] = inappropriate_spectrum
+    json_data['clickbaitiness'] = clickbaitiness
 
     return jsonify(json_data), 200
 

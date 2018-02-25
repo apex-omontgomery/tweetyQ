@@ -21,7 +21,7 @@ natural_language_understanding = NaturalLanguageUnderstandingV1(
   version='2017-02-27')
 
 #Find tweets from your intended user and put them in a string 'n'
-def getInfo(user_id):
+def getConcepts(user_id):
     tweets = []
     tweets = api.user_timeline(user_id=user_id, count =150)
     n = ' '
@@ -55,7 +55,7 @@ def nluRun(txt):
         print(response["concepts"][x]["relevance"])
 
 #Call function with user id
-getInfo(user_id)
+# getInfo(user_id)
 
 
 # tweet = 'IBM is an American multinational technology company headquartered in Armonk, New York, United States, with operations in over 170 countries.'
