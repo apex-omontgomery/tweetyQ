@@ -1,9 +1,21 @@
 {
   "userSentiments": [
-    { "user": "410409666", "value": { "emotion": 4, "sentiment": 4 } },
-    { "user": "27260086", "value": { "emotion": 4, "sentiment": 4 } },
-    { "user": "101431978", "value": { "emotion": 4, "sentiment": 4 } },
-    { "user": "317170443", "value": { "emotion": 4, "sentiment": 4 } }
+    {
+      "user": "410409666",
+      "personalityData": { "watson data": "some data" }
+    },
+    {
+      "user": "27260086",
+      "personalityData": { "watson data": "some data" }
+    },
+    {
+      "user": "101431978",
+      "personalityData": { "watson data": "some data" }
+    },
+    {
+      "user": "317170443",
+      "personalityData": { "watson data": "some data" }
+    }
   ],
   "errorSentiments": ["25073877", "79293791", "813286"]
 }
