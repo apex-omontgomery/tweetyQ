@@ -2,45 +2,14 @@
 
 ## API Endpoints
 
-POST `localhost:8080/tweet`
+POST `localhost:3000/tweet`
 
-Request: json_examples/tweet_request.json](json_examples/tweet_request.json)
+Request: [json_examples/tweet_request.json](json_examples/tweet_request.json)
 
-Response: [json_examples/tweet_.json](json_examples/tweet_.json)
+Response: [json*examples/tweet*.json](json_examples/tweet_response.json)
 
-POST `localhost:8080/tweets`
+POST `localhost:3000/user`
 
-Request: [json_examples/multiple_tweets_request.json](json_examples/multiple_tweets_request.json)
+Request: [json_examples/user_request.json](json_examples/_request.json)
 
-Response: not yet
-
-POST `localhost:8080/user`
-
-Request: ```json
-{ "userId" : "<user_id_num>"}
-```
-
-Response: ```json
-{ 
-	"user": "410409666", 
-	"value": 
-	{ 
-		"emotion": 4, 
-		"sentiment": 4 
-	} 
-}
-```
-
-POST `localhost:8080/users`
-
-Request: [json_examples/user_request.json](json_examples/user_request.json)
-
-Response: [json_examples/user_response.json](json_examples/user_response.json)
-
-POST `localhost:8080/link`
-
-Request: [json_examples/article_request.json](json_examples/article_request.json)
-
-Response: [json_examples/article_response.json](json_examples/article_response.json)
-
-
+[json*examples/tweet*.json](json_examples/user_response.json)
