@@ -1,6 +1,5 @@
 // builds all tweet containers
 const getAllTweetDoms = () => {
-  let users = [];
   const allTweetElements = document.getElementsByClassName('tweet');
   tweets = Array.from(allTweetElements).map(singleTweet => {
     return tweetObjectBuilder(singleTweet);
